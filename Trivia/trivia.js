@@ -1,15 +1,19 @@
+//makes URL from submited data
+const triviaURL = `https://opentdb.com/api.php${window.location.search}`
 const baseURL = ('https://opentdb.com/api.php?amount=10&type=multiple')
+//gets all document elements
 const questionContainer = document.querySelector('.question');
 const answerContainer = document.querySelector('.answers');
 const nextBtn = document.querySelector('#next-btn')
 const scoreText = document.querySelector('#score')
+//declares all variables needed for JS
 var result;
 var count = -1;
 var guessed = false;
 var score = 0;
 var amount;
 
-
+//makes the api request
 axios.get(baseURL)
 .then(res => {
   result = res.data.results
@@ -45,6 +49,7 @@ var nextQuestion = () => {
   }
 }
 
+//handles the users click on an answer
 answerContainer.addEventListener('click', e => {
   if (guessed === false) {
     if (e.target.tagName === 'BUTTON') {
@@ -70,6 +75,7 @@ answerContainer.addEventListener('click', e => {
   }
 })
 
+//handles the next button click
 nextBtn.addEventListener('click', e => {
   if(guessed === true && count < amount - 1){
     guessed = false;
@@ -77,14 +83,3 @@ nextBtn.addEventListener('click', e => {
     nextBtn.classList.add('greyed-out')
   }
 })
-
-function getQueryVariable(variable)
-{
-       var query = window.location.search.substring(1);
-       var vars = query.split("&");
-       for (var i=0;i<vars.length;i++) {
-               var pair = vars[i].split("=");
-               if(pair[0] == variable){return pair[1];}
-       }
-       return(false);
-}
