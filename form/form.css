@@ -1,40 +1,74 @@
 body {
   margin: 0;
   padding: 0;
+  font-size: 12pt;
+  background-image: url('https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1323857/300/200/m1/fpnw/wm0/random-objects-pre-.jpg?1464682269&s=d7241c679926df223363924f0ec1c3d8');
 }
 
 header {
-  height: 20vh;
+  height: 16vh;
   width: 100vw;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 main {
-  height: 80vh;
+  height: 76vh;
   width: 100vw;
 }
 
 h1 {
   text-align: center;
+  background-color: black;
+  color: white;
+  padding: 15px;
 }
 
-.form {
-  height: 80%;
+.form-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items:
+}
+
+form {
+  height: 100%;
   width: 80%;
-  margin: 0 auto;
-  background-color: grey;
+}
+
+.questionNum.inputs {
+  cursor: text;
 }
 
 .inputs {
+  box-shadow: 0px 0px 10px 2px black;
+  border-radius: 5px;
   height: 15%;
   width: 80%;
   background-color: white;
   border-style: none;
   margin: 2% auto;
   display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.submit{
+.inputs:hover {
+  box-shadow: 0px 0px 10px 4px black;
+}
+
+.inputs.submit{
   background-color: green;
+}
+
+.inputs.submit:hover {
+  background-color: darkgreen;
+  color: white;
+}
+
+footer {
+  height: 8vh;
 }
