@@ -60,6 +60,7 @@ button:hover {
 
 .answer-btn:hover {
   background-color: darkorange;
+  color: black;
 }
 
 footer {
@@ -83,4 +84,5 @@ h3 {
 .greyed-out{
   background-color: lightgrey;
   cursor: default;
+  color: grey;
 }
