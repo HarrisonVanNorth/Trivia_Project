@@ -42,8 +42,8 @@ var nextQuestion = () => {
   questionText.innerHTML = result[count].question
   questionContainer.appendChild(questionText)
 
-  let randomArr = random()
   let answer = [result[count].correct_answer, ...result[count].incorrect_answers]
+  let randomArr = random(answer.length);
   for(let i = 0; i < answer.length; i++) {
     let answerBtn = document.createElement('button');
     answerBtn.innerHTML = answer[randomArr[i]]
@@ -83,8 +83,11 @@ answerContainer.addEventListener('click', e => {
 })
 
 //randomizes answer order
-function random() {
-  let arr = [0,1,2,3]
+function random(length) {
+  let arr = []
+  for (let i = 0; i < length; i++) {
+    arr.push(i)
+  }
   let newArr = []
   for (let a = arr, i = a.length; i--; ) {
     let random = a.splice(Math.floor(Math.random() * (i + 1)), 1)[0];

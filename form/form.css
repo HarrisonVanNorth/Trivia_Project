@@ -1,40 +1,87 @@
 body {
   margin: 0;
   padding: 0;
+  font-size: 12pt;
+  background-image: url('https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1323857/300/200/m1/fpnw/wm0/random-objects-pre-.jpg?1464682269&s=d7241c679926df223363924f0ec1c3d8');
 }
 
 header {
-  height: 20vh;
+  height: 16vh;
   width: 100vw;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 main {
-  height: 80vh;
+  height: 76vh;
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
-  text-align: center;
+  background: black;
+  color: white;
+  font-family: monospace;
+  padding: 15px 10px;
+  text-transform: uppercase;
 }
 
-.form {
-  height: 80%;
+label {
+  background: white;
+  color: black;
+  font-family: monospace;
+  padding: 3px 3px;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+}
+
+.form-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items:
+}
+
+form {
+  height: 100%;
   width: 80%;
-  margin: 0 auto;
-  background-color: grey;
+}
+
+.questionNum.inputs {
+  cursor: text;
 }
 
 .inputs {
-  height: 15%;
-  width: 80%;
-  background-color: white;
+  box-shadow: 0px 0px 10px 2px white;
+  border-radius: 5px;
+  height: 12%;
+  width: 100%;
+  background-color: black;
+  color: white;
   border-style: none;
-  margin: 2% auto;
+  margin-bottom: 2%;
   display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.submit{
+.inputs:hover {
+  box-shadow: 0px 0px 10px 4px white;
+}
+
+.inputs.submit{
   background-color: green;
+}
+
+.inputs.submit:hover {
+  color: white;
+}
+
+footer {
+  height: 8vh;
 }
