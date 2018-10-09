@@ -1,0 +1,85 @@
+body {
+  height: 100vh;
+  margin: 0;
+  font-size: 12pt;
+}
+
+header {
+  height: 12%;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.question {
+  font-size: 2rem;
+  text-align: center;
+}
+
+h4 {
+  margin: 0;
+  color: white;
+}
+
+main {
+  height: 76%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+}
+
+.answers {
+  width: 75%;
+  height: 100%;
+  text-align: center;
+}
+
+button {
+  margin: 20px;
+  display: block;
+  width: 100%;
+  background-color: orange;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.5rem;
+  box-shadow: 2px 2px 1px black;
+  cursor: pointer;
+}
+
+.answer-btn {
+  height: 15%;
+}
+
+.answer-btn:hover {
+  background-color: darkorange;
+  color: black;
+  box-shadow: 5px 5px 10px black;
+}
+
+footer {
+  height: 12%;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h3 {
+  color: white;
+  margin-left: 8%;
+}
+
+.next {
+  width: 10%;
+  margin-right: 9%;
+}
+
+.greyed-out{
+  background-color: lightgrey;
+  cursor: default;
+  color: grey;
+}
