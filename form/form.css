@@ -16,13 +16,26 @@ header {
 main {
   height: 76vh;
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
-  text-align: center;
-  background-color: black;
+  background: black;
   color: white;
-  padding: 15px;
+  font-family: monospace;
+  padding: 15px 10px;
+  text-transform: uppercase;
+}
+
+label {
+  background: white;
+  color: black;
+  font-family: monospace;
+  padding: 3px 3px;
+  text-transform: uppercase;
+  font-size: 1.3rem;
 }
 
 .form-container {
@@ -43,13 +56,14 @@ form {
 }
 
 .inputs {
-  box-shadow: 0px 0px 10px 2px black;
+  box-shadow: 0px 0px 10px 2px white;
   border-radius: 5px;
-  height: 15%;
-  width: 80%;
-  background-color: white;
+  height: 12%;
+  width: 100%;
+  background-color: black;
+  color: white;
   border-style: none;
-  margin: 2% auto;
+  margin-bottom: 2%;
   display: block;
   font-size: 1.3rem;
   font-weight: bold;
@@ -57,7 +71,7 @@ form {
 }
 
 .inputs:hover {
-  box-shadow: 0px 0px 10px 4px black;
+  box-shadow: 0px 0px 10px 4px white;
 }
 
 .inputs.submit{
@@ -65,7 +79,6 @@ form {
 }
 
 .inputs.submit:hover {
-  background-color: darkgreen;
   color: white;
 }
 
