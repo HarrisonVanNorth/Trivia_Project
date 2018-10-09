@@ -1,7 +1,6 @@
 //makes URL from submited data
-const triviaURL = `https://opentdb.com/api.php${window.location.search}`
-console.log(triviaURL);
-const baseURL = ('https://opentdb.com/api.php?amount=10&type=multiple')
+const baseURL = `https://opentdb.com/api.php${window.location.search}`
+// const baseURL = ('https://opentdb.com/api.php?amount=10&type=multiple')
 //gets all document elements
 const questionContainer = document.querySelector('.question');
 const answerContainer = document.querySelector('.answers');
