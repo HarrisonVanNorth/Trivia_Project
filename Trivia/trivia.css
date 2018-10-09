@@ -15,7 +15,7 @@ header {
 
 .question {
   font-size: 2rem;
-
+  text-align: center;
 }
 
 h4 {
@@ -50,10 +50,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  box-shadow: 5px 5px 10px black;
-}
-
 .answer-btn {
   height: 15%;
 }
@@ -61,6 +57,7 @@ button:hover {
 .answer-btn:hover {
   background-color: darkorange;
   color: black;
+  box-shadow: 5px 5px 10px black;
 }
 
 footer {
