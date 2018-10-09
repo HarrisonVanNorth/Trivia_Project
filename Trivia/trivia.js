@@ -1,7 +1,10 @@
+
+
 //makes URL from submited data
 const baseURL = `https://opentdb.com/api.php${window.location.search}`
 // const baseURL = ('https://opentdb.com/api.php?amount=10&type=multiple')
 //gets all document elements
+const main = document.querySelector('main')
 const questionContainer = document.querySelector('.question');
 const answerContainer = document.querySelector('.answers');
 const nextBtn = document.querySelector('#next-btn')
@@ -13,15 +16,34 @@ var count = -1;
 var guessed = false;
 var score = 0;
 var amount;
+var ansBnt;
+var categoryKey;
+var mainColors = {
+  orange:'darkorange',
+  green: 'darkgreen',
+  pink: '#de03c3',
+  yellow: '#cab104',
+  blue: 'darkblue',
+  red: 'darkred',
+  purple: '#600759'
+}
+var buttonColors = {
+  orange:'#fba829',
+  green: '#4eaf0d',
+  pink: '#f2099a',
+  yellow: '#ebdf05',
+  blue: '#1626f4',
+  red: '#ed0528',
+  purple: '#d01cf7'
+}
 
 //makes the api request
 axios.get(baseURL)
 .then(res => {
-  result = res.data.results
+  result = res.data.results;
   amount = result.length;
   nextQuestion();
 })
-
 var nextQuestion = () => {
   count++;
   questionNum.innerText = `Question: ${count + 1}`
@@ -46,18 +68,21 @@ var nextQuestion = () => {
   let randomArr = random(answer.length);
   for(let i = 0; i < answer.length; i++) {
     let answerBtn = document.createElement('button');
+    answerBtn.style.color = '#eae7d8'
     answerBtn.innerHTML = answer[randomArr[i]]
     answerBtn.classList.add('answer-btn')
     answerBtn.id = answer[randomArr[i]]
     answerContainer.appendChild(answerBtn)
   }
+  dynamicBackground();
+  dynamicButtons();
 }
 
 //handles the users click on an answer
 answerContainer.addEventListener('click', e => {
   if (guessed === false) {
     if (e.target.tagName === 'BUTTON') {
-      let ansBtn = document.querySelectorAll('.answer-btn')
+       ansBtn = document.querySelectorAll('.answer-btn')
       guessed = true;
       nextBtn.classList.remove('greyed-out')
       if (e.target.id === result[count].correct_answer){
@@ -104,3 +129,54 @@ nextBtn.addEventListener('click', e => {
     nextBtn.classList.add('greyed-out')
   }
 })
+
+//changes the bacground color of each button inreation to category
+var dynamicButtons = () => {
+  ansBnt = document.querySelectorAll('.answer-btn')
+  categoryKey = result[count].category;
+  for(let i = 0; i < ansBnt.length; i++){
+    if(categoryKey.includes('Entertainment') || categoryKey.includes('Celebrities')){
+      nextBtn.style.backgroundColor = buttonColors.orange
+      ansBnt[i].style.backgroundColor = buttonColors.orange
+      ansBnt[i].style.color = 'black'
+    } else if(categoryKey.includes('Science')){
+      nextBtn.style.backgroundColor = buttonColors.green
+      ansBnt[i].style.backgroundColor = buttonColors.green
+    } else if(categoryKey.includes('Art')){
+      nextBtn.style.backgroundColor = buttonColors.pink
+      ansBnt[i].style.backgroundColor = buttonColors.pink
+    } else if(categoryKey.includes('History') || categoryKey.includes('Mythology')){
+      nextBtn.style.backgroundColor = buttonColors.yellow
+      ansBnt[i].style.backgroundColor = buttonColors.yellow
+      ansBnt[i].style.color = 'black'
+    } else if(categoryKey.includes('Geography')){
+      nextBtn.style.backgroundColor = buttonColors.blue
+      ansBnt[i].style.backgroundColor = buttonColors.blue
+    } else if(categoryKey.includes('Sports')){
+      nextBtn.style.backgroundColor = buttonColors.red
+      ansBnt[i].style.backgroundColor = buttonColors.red
+    } else if(categoryKey.includes('Animals') || categoryKey.includes('Vechicles') || categoryKey.includes('General Knowledge')){
+      nextBtn.style.backgroundColor = buttonColors.purple
+      ansBnt[i].style.backgroundColor = buttonColors.purple
+    }
+  }
+}
+// Chenges bacground color of the main tag in relation to the category
+var dynamicBackground = () => {
+  categoryKey = result[count].category;
+  if(categoryKey.includes('Entertainment') || categoryKey.includes('Celebrities')){
+    main.style.backgroundColor = mainColors.orange
+  } else if(categoryKey.includes('Science')){
+    main.style.backgroundColor = mainColors.green
+  } else if(categoryKey.includes('Art')){
+    main.style.backgroundColor = mainColors.pink
+  } else if(categoryKey.includes('History') || categoryKey.includes('Mythology')){
+    main.style.backgroundColor = mainColors.yellow
+  } else if(categoryKey.includes('Geography')){
+    main.style.backgroundColor = mainColors.blue
+  } else if(categoryKey.includes('Sports')){
+    main.style.backgroundColor = mainColors.red
+  } else if(categoryKey.includes('Animals') || categoryKey.includes('Vechicles') || categoryKey.includes('General Knowledge')){
+    main.style.backgroundColor = mainColors.purple
+  }
+}
