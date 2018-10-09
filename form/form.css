@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  height: 20vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  height: 80vh;
+  width: 100vw;
+}
+
+h1 {
+  text-align: center;
+}
+
+.form {
+  height: 80%;
+  width: 80%;
+  margin: 0 auto;
+  background-color: grey;
+}
+
+.inputs {
+  height: 15%;
+  width: 80%;
+  background-color: white;
+  border-style: none;
+  margin: 2% auto;
+  display: block;
+}
+
+.submit{
+  background-color: green;
+}
