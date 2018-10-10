@@ -126,17 +126,27 @@ h2 {
   display: none;
 }
 
-.end-btn {
+.end-btns {
   display: flex;
   justify-content: space-around;
 }
 
-.leaderboard {
+.end-btn {
   height: 50px;
   background-color: black;
   margin: 10px 20px;
   color: white;
   width: 200px;
+}
+
+.leader {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  height: 80%;
+  width: 80%;
+  background-color: white;
+  z-index: 50;
 }
 
 @-webkit-keyframes Rainbow {

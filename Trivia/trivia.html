@@ -6,14 +6,17 @@
     <link rel="stylesheet" href="trivia.css">
   </head>
   <body>
+    <div class="leader hidden">
+
+    </div>
     <div class="ending hidden">
       <div>
         <h2 class="end-score">Score:</h2>
         <h2 class="end-amount"></h2>
         <h2 class="end-percent"></h2>
-        <div class="end-btn">
-          <button class="leaderboard" type="button" name="button" onClick="window.location.reload()">Again</button>        
-          <button class="leaderboard" type="button" name="button">Leaderboard</button>
+        <div class="end-btns">
+          <button class="end-btn" type="button" name="button" onClick="window.location.reload()">Again</button>
+          <button class="leaderboard end-btn" type="button" name="button">Leaderboard</button>
         </div>
       </div>
     </div>

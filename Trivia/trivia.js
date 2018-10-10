@@ -21,6 +21,8 @@ const endScore = document.querySelector('.end-score')
 const endAmount = document.querySelector('.end-amount')
 const endPercent = document.querySelector('.end-percent')
 const timeText = document.querySelector('.timer')
+const leaderboardBtn = document.querySelector('.leaderboard')
+const leader = document.querySelector('.leader')
 
 //declares all variables needed for JS
 var result;
@@ -231,3 +233,8 @@ var time = () => {
     clearInterval(timer)
   }
 }
+
+leaderboardBtn.addEventListener('click', e=> {
+  end.classList.add('hidden')
+  leader.classList.remove('hidden')
+})
