@@ -2,7 +2,10 @@ body {
   margin: 0;
   padding: 0;
   font-size: 12pt;
-  background-image: url('https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1323857/300/200/m1/fpnw/wm0/random-objects-pre-.jpg?1464682269&s=d7241c679926df223363924f0ec1c3d8');
+  /* background-image: url('https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1323857/300/200/m1/fpnw/wm0/random-objects-pre-.jpg?1464682269&s=d7241c679926df223363924f0ec1c3d8'); */
+  background: linear-gradient(0deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 500% 500%;
+  animation: Rainbow 25s ease infinite;
 }
 
 header {
@@ -56,8 +59,7 @@ form {
 }
 
 .inputs {
-  box-shadow: 0px 0px 10px 2px white;
-  border-radius: 5px;
+  /* box-shadow: 0px 0px 10px 2px white; */
   height: 12%;
   width: 100%;
   background-color: black;
@@ -70,8 +72,13 @@ form {
   cursor: pointer;
 }
 
+select {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+}
+
 .inputs:hover {
-  box-shadow: 0px 0px 10px 4px white;
+  /* box-shadow: 0px 0px 10px 4px white; */
 }
 
 .inputs.submit{
@@ -85,3 +92,11 @@ form {
 footer {
   height: 8vh;
 }
+
+@-webkit-keyframes Rainbow {
+  0% {
+    background-position: 95% 0%; }
+  50% {
+    background-position: 7% 100%; }
+  100% {
+    background-position: 95% 0%; } }
