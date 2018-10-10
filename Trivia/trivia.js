@@ -8,8 +8,12 @@ const main = document.querySelector('main')
 const questionContainer = document.querySelector('.question');
 const answerContainer = document.querySelector('.answers');
 const nextBtn = document.querySelector('#next-btn')
+const backBtn = document.querySelector('#back-btn')
 const scoreText = document.querySelector('#score')
 const questionNum = document.querySelector('#quest-num')
+const end = document.querySelector('.ending')
+const endScore = document.querySelector('.end-score')
+const endPercent = document.querySelector('.end-percent')
 //declares all variables needed for JS
 var result;
 var count = -1;
@@ -45,6 +49,7 @@ axios.get(baseURL)
   nextQuestion();
 })
 var nextQuestion = () => {
+  backBtn.style.color = 'white'
   count++;
   questionNum.innerText = `Question: ${count + 1}`
   //removes previous answer buttons
@@ -82,7 +87,7 @@ var nextQuestion = () => {
 answerContainer.addEventListener('click', e => {
   if (guessed === false) {
     if (e.target.tagName === 'BUTTON') {
-       ansBtn = document.querySelectorAll('.answer-btn')
+      ansBtn = document.querySelectorAll('.answer-btn')
       guessed = true;
       nextBtn.classList.remove('greyed-out')
       if (e.target.id === result[count].correct_answer){
@@ -96,12 +101,16 @@ answerContainer.addEventListener('click', e => {
       for (let i = 0; i < ansBtn.length; i++) {
         if (ansBtn[i].id === result[count].correct_answer){
           ansBtn[i].style.backgroundColor = 'green'
-        } else {
+        } else if (ansBtn[i].style.backgroundColor !== 'red'){
           ansBtn[i].classList.add('greyed-out')
         }
       }
+      //checks if the game has ended if it has it brings up the score card
       if (count >= amount - 1) {
         nextBtn.classList.add('greyed-out')
+        end.classList.remove('hidden')
+        endScore.innerHTML = `${score} out of ${amount}`
+        endPercent.innerHTML = `${((score/amount) * 100).toFixed(0)}%`
       }
     }
   }
@@ -137,26 +146,35 @@ var dynamicButtons = () => {
   for(let i = 0; i < ansBnt.length; i++){
     if(categoryKey.includes('Entertainment') || categoryKey.includes('Celebrities')){
       nextBtn.style.backgroundColor = buttonColors.orange
+      backBtn.style.backgroundColor = buttonColors.orange
       ansBnt[i].style.backgroundColor = buttonColors.orange
       ansBnt[i].style.color = 'black'
+      backBtn.style.color = 'black'
     } else if(categoryKey.includes('Science')){
       nextBtn.style.backgroundColor = buttonColors.green
+      backBtn.style.backgroundColor = buttonColors.green
       ansBnt[i].style.backgroundColor = buttonColors.green
     } else if(categoryKey.includes('Art')){
       nextBtn.style.backgroundColor = buttonColors.pink
+      backBtn.style.backgroundColor = buttonColors.pink
       ansBnt[i].style.backgroundColor = buttonColors.pink
     } else if(categoryKey.includes('History') || categoryKey.includes('Mythology')){
       nextBtn.style.backgroundColor = buttonColors.yellow
+      backBtn.style.backgroundColor = buttonColors.yellow
       ansBnt[i].style.backgroundColor = buttonColors.yellow
       ansBnt[i].style.color = 'black'
+      backBtn.style.color = 'black'
     } else if(categoryKey.includes('Geography')){
       nextBtn.style.backgroundColor = buttonColors.blue
+      backBtn.style.backgroundColor = buttonColors.blue
       ansBnt[i].style.backgroundColor = buttonColors.blue
     } else if(categoryKey.includes('Sports')){
       nextBtn.style.backgroundColor = buttonColors.red
+      backBtn.style.backgroundColor = buttonColors.red
       ansBnt[i].style.backgroundColor = buttonColors.red
-    } else if(categoryKey.includes('Animals') || categoryKey.includes('Vechicles') || categoryKey.includes('General Knowledge')){
+    } else if(categoryKey.includes('Animals') || categoryKey.includes('Vechicles') || categoryKey.includes('General Knowledge') || categoryKey.includes('Politics') || categoryKey.includes('Vehicles')){
       nextBtn.style.backgroundColor = buttonColors.purple
+      backBtn.style.backgroundColor = buttonColors.purple
       ansBnt[i].style.backgroundColor = buttonColors.purple
     }
   }
@@ -176,7 +194,7 @@ var dynamicBackground = () => {
     main.style.backgroundColor = mainColors.blue
   } else if(categoryKey.includes('Sports')){
     main.style.backgroundColor = mainColors.red
-  } else if(categoryKey.includes('Animals') || categoryKey.includes('Vechicles') || categoryKey.includes('General Knowledge')){
+  } else if(categoryKey.includes('Animals') || categoryKey.includes('Vechicles') || categoryKey.includes('General Knowledge') || categoryKey.includes('Politics') || categoryKey.includes('Vehicles')){
     main.style.backgroundColor = mainColors.purple
   }
 }

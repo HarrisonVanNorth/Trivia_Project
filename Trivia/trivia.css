@@ -2,6 +2,8 @@ body {
   height: 100vh;
   margin: 0;
   font-size: 12pt;
+  color: white;
+  font-family: sans-serif;
 }
 
 header {
@@ -42,12 +44,12 @@ button {
   margin: 20px;
   display: block;
   width: 100%;
-  background-color: orange;
   border-radius: 10px;
   border: none;
   font-size: 1.5rem;
   box-shadow: 2px 2px 1px black;
   cursor: pointer;
+  color: white;
 }
 
 .answer-btn {
@@ -78,8 +80,49 @@ h3 {
   margin-right: 9%;
 }
 
-.greyed-out{
-  background-color: lightgrey;
-  cursor: default;
-  color: grey;
+a {
+  text-decoration: none;
+  margin-left: 6%;
 }
+
+.greyed-out{
+  background-color: lightgrey !important;
+  cursor: default;
+  color: grey !important;
+}
+
+.ending {
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  background: linear-gradient(0deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 500% 500%;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* -webkit-animation: Rainbow 25s ease infinite;
+  -moz-animation: Rainbow 25s ease infinite; */
+  animation: Rainbow 25s ease infinite;
+}
+
+h2 {
+  color: black;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+@-webkit-keyframes Rainbow {
+  0% {
+    background-position: 95% 0%; }
+  50% {
+    background-position: 7% 100%; }
+  100% {
+    background-position: 95% 0%; } }
