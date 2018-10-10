@@ -168,7 +168,6 @@ h2 {
   width: 80%;
   background-color: white;
   z-index: 50;
-  overflow-y: scroll;
   border-radius: 10px;
   box-shadow: 8px 8px 10px black;
 }
@@ -176,14 +175,16 @@ h2 {
 .score-content {
   margin: 10px auto;
   height: 90%;
-  width: 90%
+  width: 90%;
 }
 
 .scores {
+  overflow-y: scroll;
   height: 90%;
 }
 
 .leader .score-content .score-btn-container {
+  margin-top: 30px;
   display: flex;
   justify-content: space-evenly;
   height: 10%;
