@@ -1,8 +1,13 @@
 
-
 //makes URL from submited data
-const baseURL = `https://opentdb.com/api.php${window.location.search}`
-// const baseURL = ('https://opentdb.com/api.php?amount=10&type=multiple')
+var baseURL;
+//checks if anything was passed through
+if (window.location.search !== '') {
+  baseURL = `https://opentdb.com/api.php${window.location.search}`
+} else {
+  baseURL = `https://opentdb.com/api.php?amount=10`
+}
+
 //gets all document elements
 const main = document.querySelector('main')
 const questionContainer = document.querySelector('.question');
@@ -13,15 +18,21 @@ const scoreText = document.querySelector('#score')
 const questionNum = document.querySelector('#quest-num')
 const end = document.querySelector('.ending')
 const endScore = document.querySelector('.end-score')
+const endAmount = document.querySelector('.end-amount')
 const endPercent = document.querySelector('.end-percent')
+const timeText = document.querySelector('.timer')
+
 //declares all variables needed for JS
 var result;
 var count = -1;
 var guessed = false;
 var score = 0;
+var amountCorrect = 0;
 var amount;
 var ansBnt;
 var categoryKey;
+var timeScore = 100;
+var timer;
 var mainColors = {
   orange:'darkorange',
   green: 'darkgreen',
@@ -48,6 +59,8 @@ axios.get(baseURL)
   amount = result.length;
   nextQuestion();
 })
+
+//changes the html to the next question
 var nextQuestion = () => {
   backBtn.style.color = 'white'
   count++;
@@ -65,10 +78,12 @@ var nextQuestion = () => {
     previousQuestion.parentNode.removeChild(previousQuestion);
   }
 
+  //adds the question
   let questionText = document.createElement('h4');
   questionText.innerHTML = result[count].question
   questionContainer.appendChild(questionText)
 
+  //adds the buttons
   let answer = [result[count].correct_answer, ...result[count].incorrect_answers]
   let randomArr = random(answer.length);
   for(let i = 0; i < answer.length; i++) {
@@ -79,8 +94,12 @@ var nextQuestion = () => {
     answerBtn.id = answer[randomArr[i]]
     answerContainer.appendChild(answerBtn)
   }
+  //changes colors
   dynamicBackground();
   dynamicButtons();
+  //starts timer
+  timer = setInterval(time, 200)
+  timeText.innerHTML = `Time: ${timeScore}`
 }
 
 //handles the users click on an answer
@@ -91,7 +110,8 @@ answerContainer.addEventListener('click', e => {
       guessed = true;
       nextBtn.classList.remove('greyed-out')
       if (e.target.id === result[count].correct_answer){
-        score++;
+        score += timeScore
+        amountCorrect++;
         e.target.style.backgroundColor = 'green'
         scoreText.innerText = `Score: ${score}`
       } else {
@@ -109,9 +129,13 @@ answerContainer.addEventListener('click', e => {
       if (count >= amount - 1) {
         nextBtn.classList.add('greyed-out')
         end.classList.remove('hidden')
-        endScore.innerHTML = `${score} out of ${amount}`
-        endPercent.innerHTML = `${((score/amount) * 100).toFixed(0)}%`
+        endScore.innerHTML = `Score: ${score}`
+        endAmount.innerHTML = `${amountCorrect} out of ${amount}`
+        endPercent.innerHTML = `${((amountCorrect/amount) * 100).toFixed(0)}%`
       }
+      //stops timer
+      clearInterval(timer);
+      timeScore = 100;
     }
   }
 })
@@ -196,5 +220,14 @@ var dynamicBackground = () => {
     main.style.backgroundColor = mainColors.red
   } else if(categoryKey.includes('Animals') || categoryKey.includes('Vechicles') || categoryKey.includes('General Knowledge') || categoryKey.includes('Politics') || categoryKey.includes('Vehicles')){
     main.style.backgroundColor = mainColors.purple
+  }
+}
+
+//handles timer and time score
+var time = () => {
+  timeScore--
+  timeText.innerHTML = `Time: ${timeScore}`
+  if (timeScore === 0) {
+    clearInterval(timer)
   }
 }

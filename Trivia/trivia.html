@@ -8,9 +8,13 @@
   <body>
     <div class="ending hidden">
       <div>
-        <h2>Score:</h2>
-        <h2 class="end-score"></h2>
+        <h2 class="end-score">Score:</h2>
+        <h2 class="end-amount"></h2>
         <h2 class="end-percent"></h2>
+        <div class="end-btn">
+          <button class="leaderboard" type="button" name="button" onClick="window.location.reload()">Again</button>        
+          <button class="leaderboard" type="button" name="button">Leaderboard</button>
+        </div>
       </div>
     </div>
     <header>
@@ -18,7 +22,10 @@
       </div>
     </header>
     <main>
-      <div class="answers">
+      <div class="main-container">
+        <div class="answers">
+        </div>
+        <h1 class="timer">Time: </h1>
       </div>
     </main>
     <footer>

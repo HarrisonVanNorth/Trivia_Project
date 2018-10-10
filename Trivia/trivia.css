@@ -30,18 +30,25 @@ main {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   background-color: grey;
 }
 
-.answers {
+.main-container {
   width: 75%;
   height: 100%;
+}
+
+.answers {
+  width: 100%;
+  height: 75%;
+  text-align: center;
+}
+
+.timer {
   text-align: center;
 }
 
 button {
-  margin: 20px;
   display: block;
   width: 100%;
   border-radius: 10px;
@@ -53,12 +60,11 @@ button {
 }
 
 .answer-btn {
-  height: 15%;
+  margin: 20px 0;
+  height: 20%;
 }
 
 .answer-btn:hover {
-  background-color: darkorange;
-  color: black;
   box-shadow: 5px 5px 10px black;
 }
 
@@ -72,7 +78,6 @@ footer {
 
 h3 {
   color: white;
-  margin-left: 8%;
 }
 
 .next {
@@ -81,6 +86,7 @@ h3 {
 }
 
 a {
+  width: 10%;
   text-decoration: none;
   margin-left: 6%;
 }
@@ -97,16 +103,17 @@ a {
   position: absolute;
   top: 25%;
   left: 25%;
-  background: linear-gradient(0deg, red, orange, yellow, green, blue, indigo, violet);
-  background-size: 500% 500%;
+  background-color: white;
+  /* background: linear-gradient(0deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 500% 500%; */
   border-radius: 10px;
-  box-shadow: 5px 5px 10px black;
+  box-shadow: 8px 8px 10px black;
   display: flex;
   justify-content: center;
   align-items: center;
   /* -webkit-animation: Rainbow 25s ease infinite;
-  -moz-animation: Rainbow 25s ease infinite; */
-  animation: Rainbow 25s ease infinite;
+  -moz-animation: Rainbow 25s ease infinite;
+  animation: Rainbow 25s ease infinite; */
 }
 
 h2 {
@@ -117,6 +124,19 @@ h2 {
 
 .hidden {
   display: none;
+}
+
+.end-btn {
+  display: flex;
+  justify-content: space-around;
+}
+
+.leaderboard {
+  height: 50px;
+  background-color: black;
+  margin: 10px 20px;
+  color: white;
+  width: 200px;
 }
 
 @-webkit-keyframes Rainbow {
