@@ -235,7 +235,7 @@ var time = () => {
   timeScore--
   timeText.innerHTML = `Time: ${timeScore}`
   bar.style.width = `${timeScore}%`
-  if (timeScore < 45) {
+  if (timeScore < 52) {
     timeText.style.color = 'white';
   }
   if (timeScore === 0) {
