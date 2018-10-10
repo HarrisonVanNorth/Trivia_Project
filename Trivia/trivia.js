@@ -1,4 +1,3 @@
-
 //makes URL from submited data
 var baseURL;
 //checks if anything was passed through
@@ -38,6 +37,7 @@ var ansBnt;
 var categoryKey;
 var timeScore = 100;
 var timer;
+var leaderboardData;
 var mainColors = {
   orange:'darkorange',
   green: 'darkgreen',
@@ -237,50 +237,58 @@ var time = () => {
   }
 }
 
-leaderboardBtn.addEventListener('click', e=> {
-  axios.get('leaderboard.json')
-  .then(e => {
-    end.classList.add('hidden')
-    leader.classList.remove('hidden')
+var writeLeaderboard = (data) => {
+  end.classList.add('hidden')
+  leader.classList.remove('hidden')
+  let row = document.createElement('div')
+  row.classList.add('row')
+  for (let x in data[0]) {
+    let col = document.createElement('div')
+    col.classList.add('col')
+    col.innerHTML = x
+    row.appendChild(col)
+  }
+  scores.appendChild(row)
+  for (let i = 0; i < data.length; i++) {
     let row = document.createElement('div')
     row.classList.add('row')
-    for (let x in e.data[0]) {
+    for (let x in data[i]) {
       let col = document.createElement('div')
       col.classList.add('col')
-      col.innerHTML = x
+      col.innerHTML = data[i][x]
       row.appendChild(col)
     }
     scores.appendChild(row)
-    for (let i = 0; i < e.data.length; i++) {
-      let row = document.createElement('div')
-      row.classList.add('row')
-      for (let x in e.data[i]) {
-        let col = document.createElement('div')
-        col.classList.add('col')
-        col.innerHTML = e.data[i][x]
-        row.appendChild(col)
-      }
-      scores.appendChild(row)
-    }
-  })
-})
+  }
+}
 
-leaderAdd.addEventListener('click', e=> {
-  let obj = {"Name": "dksdf", "Score": score, "Amount Correct": `${amountCorrect} out of ${amount}`}
-  axios.post('http://127.0.0.1:8080/trivia/leaderboard.json', obj)
-  .then(res => {
-    console.log(res);
-  })
-
-})
-
-leaderBack.addEventListener('click', e=> {
-  leader.classList.add('hidden')
-  end.classList.remove('hidden')
+var deleteLeaderboard = () => {
   let rows = document.querySelectorAll('.row')
   if (rows.length > 0) {
     for (let i = 0; i < rows.length; i++) {
       rows[i].parentNode.removeChild(rows[i]);
     }
   }
+}
+
+leaderboardBtn.addEventListener('click', e=> {
+  axios.get('leaderboard.json')
+  .then(e => {
+    leaderboardData = e.data;
+    writeLeaderboard(leaderboardData)
+  })
+})
+
+leaderAdd.addEventListener('click', e=> {
+  let name = prompt('What is your name?')
+  let obj = {"Name": name, "Score": score, "Amount Correct": `${amountCorrect} out of ${amount}`}
+  leaderboardData.push(obj)
+  deleteLeaderboard()
+  writeLeaderboard(leaderboardData)
+})
+
+leaderBack.addEventListener('click', e=> {
+  leader.classList.add('hidden')
+  end.classList.remove('hidden')
+  deleteLeaderboard()
 })
