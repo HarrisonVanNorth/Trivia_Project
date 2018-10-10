@@ -25,6 +25,7 @@ const leader = document.querySelector('.leader')
 const scores = document.querySelector('.scores')
 const leaderAdd = document.querySelector('#leader-add')
 const leaderBack = document.querySelector('#leader-back')
+const bar = document.querySelector('.bar')
 
 //declares all variables needed for JS
 var result;
@@ -165,6 +166,7 @@ nextBtn.addEventListener('click', e => {
     guessed = false;
     nextQuestion();
     nextBtn.classList.add('greyed-out')
+    timeText.style.color = 'black'
   }
 })
 
@@ -232,6 +234,10 @@ var dynamicBackground = () => {
 var time = () => {
   timeScore--
   timeText.innerHTML = `Time: ${timeScore}`
+  bar.style.width = `${timeScore}%`
+  if (timeScore < 45) {
+    timeText.style.color = 'white';
+  }
   if (timeScore === 0) {
     clearInterval(timer)
   }
