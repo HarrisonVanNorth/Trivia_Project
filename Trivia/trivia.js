@@ -23,6 +23,9 @@ const endPercent = document.querySelector('.end-percent')
 const timeText = document.querySelector('.timer')
 const leaderboardBtn = document.querySelector('.leaderboard')
 const leader = document.querySelector('.leader')
+const scores = document.querySelector('.scores')
+const leaderAdd = document.querySelector('#leader-add')
+const leaderBack = document.querySelector('#leader-back')
 
 //declares all variables needed for JS
 var result;
@@ -235,6 +238,49 @@ var time = () => {
 }
 
 leaderboardBtn.addEventListener('click', e=> {
-  end.classList.add('hidden')
-  leader.classList.remove('hidden')
+  axios.get('leaderboard.json')
+  .then(e => {
+    end.classList.add('hidden')
+    leader.classList.remove('hidden')
+    let row = document.createElement('div')
+    row.classList.add('row')
+    for (let x in e.data[0]) {
+      let col = document.createElement('div')
+      col.classList.add('col')
+      col.innerHTML = x
+      row.appendChild(col)
+    }
+    scores.appendChild(row)
+    for (let i = 0; i < e.data.length; i++) {
+      let row = document.createElement('div')
+      row.classList.add('row')
+      for (let x in e.data[i]) {
+        let col = document.createElement('div')
+        col.classList.add('col')
+        col.innerHTML = e.data[i][x]
+        row.appendChild(col)
+      }
+      scores.appendChild(row)
+    }
+  })
+})
+
+leaderAdd.addEventListener('click', e=> {
+  let obj = {"Name": "dksdf", "Score": score, "Amount Correct": `${amountCorrect} out of ${amount}`}
+  axios.post('http://127.0.0.1:8080/trivia/leaderboard.json', obj)
+  .then(res => {
+    console.log(res);
+  })
+
+})
+
+leaderBack.addEventListener('click', e=> {
+  leader.classList.add('hidden')
+  end.classList.remove('hidden')
+  let rows = document.querySelectorAll('.row')
+  if (rows.length > 0) {
+    for (let i = 0; i < rows.length; i++) {
+      rows[i].parentNode.removeChild(rows[i]);
+    }
+  }
 })

@@ -56,7 +56,6 @@ button {
   font-size: 1.5rem;
   box-shadow: 2px 2px 1px black;
   cursor: pointer;
-  color: white;
 }
 
 .answer-btn {
@@ -147,6 +146,42 @@ h2 {
   width: 80%;
   background-color: white;
   z-index: 50;
+  overflow-y: scroll;
+  border-radius: 10px;
+  box-shadow: 8px 8px 10px black;
+}
+
+.score-content {
+  margin: 10px auto;
+  height: 90%;
+  width: 90%
+}
+
+.scores {
+  height: 90%;
+}
+
+.leader .score-content .score-btn-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.score-btn {
+  width: 30%;
+  background-color: green;
+  color: white;
+}
+
+.row {
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+.col {
+  color: black;
+  font-size: 1.5rem;
+  width: 33%;
+  text-align: center;
 }
 
 @-webkit-keyframes Rainbow {
