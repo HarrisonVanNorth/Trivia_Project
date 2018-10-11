@@ -61,7 +61,7 @@ var buttonColors = {
   purple: '#d01cf7'
 }
 var categoryIcon = {
-  general: 'https://giphy.com/embed/ijxKTF6iE4K4M',
+  general: 'https://giphy.com/embed/26ufdipQqU2lhNa4g',
   books: 'https://giphy.com/embed/3o85xBwvWcj1Z11Gda',
   film: 'https://giphy.com/embed/xUOxeZ7Cgf5RAZ0tLq',
   music: 'https://giphy.com/embed/3oriNYvVkCgIhSIKic',
@@ -71,20 +71,20 @@ var categoryIcon = {
   board: 'https://giphy.com/embed/1WyJrpqEI74qs',
   nature: 'https://giphy.com/embed/l0MYEqx0khJxVyXcc',
   computers: 'https://giphy.com/embed/11jQqqyF4S5MWY',
-  mathematics: 'https://giphy.com/embed/tbaVMdZJcBNiE',
-  mythology: 'https://giphy.com/embed/8ki6aWRvqs7fy',
+  mathematics: 'https://giphy.com/embed/3ohs88j0jPszpGCbyy',
+  mythology: 'https://giphy.com/embed/fbFbMdF9KI3QY',
   sports: 'https://giphy.com/embed/vcYJ10AVGFZbG',
-  geography: 'https://giphy.com/embed/5sZfvZBHX71Wo',
-  history: 'https://giphy.com/embed/rbE4XIr6GS8F2',
-  politics: 'https://giphy.com/embed/3o7bu6ctZy3qGJyBkk',
-  art: "https://giphy.com/embed/2Fazad9Hs5xPAF6iQ",
-  celebrities: 'https://giphy.com/embed/xUOxf2f9I3Ejpky5Wg',
-  animals: 'https://giphy.com/embed/aHmquP8GsDCHS',
+  geography: 'https://giphy.com/embed/X6hiFJjvTDAAw',
+  history: 'https://giphy.com/embed/wSrdicIdgKY8M',
+  politics: 'https://giphy.com/embed/3SlnytgfJTaxy',
+  art: "https://giphy.com/embed/aJCEZPCJnVtXW",
+  celebrities: 'https://giphy.com/embed/3o6gDRuqYeG11VeBG0',
+  animals: 'https://giphy.com/embed/33zX3zllJBGY8',
   vehicles: 'https://giphy.com/embed/l0Iy2xpoNWyfyjpuM',
   comics: 'https://giphy.com/embed/iLup1YcSTLaUg',
-  gadgets: 'https://giphy.com/embed/wKqVffdPJdmog',
-  anime: 'https://giphy.com/embed/V4sY8JCTxGyaI',
-  catoon: 'https://giphy.com/embed/4pjKt6jfT6Z7W' //Makers of the API miss spelled cartoon
+  gadgets: 'https://giphy.com/embed/fnkyJXcCXZngY',
+  anime: 'https://giphy.com/embed/nSKCHXMmNb7yM',
+  cartoon: 'https://giphy.com/embed/4pjKt6jfT6Z7W' //Makers of the API miss spelled cartoon
 }
 
 //makes the api request

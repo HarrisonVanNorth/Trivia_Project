@@ -14,7 +14,7 @@
       <div class="form-container">
         <form class="form" action="../trivia/trivia.html" method="get">
           <label for="amount"># of Questions</label>
-          <input class="questionNum inputs" type="text" name="amount" value="10">
+          <input class="questionNum inputs" type="number" min="1" max="20" name="amount" value="10">
           <label for="category">category</label>
           <select class="category inputs" name="category">
             <option value="">Any Category</option>
@@ -41,7 +41,7 @@
             <option value="29">Entertainment: Comics</option>
             <option value="30">Science: Gadgets</option>
             <option value="31">Entertainment: Japanese Anime & Manga</option>
-            <option value="32">Entertainment: Catoon & Animations</option>
+            <option value="32">Entertainment: Cartoon & Animations</option>
           </select>
           <label for="difficulty">Difficulty</label>
           <select class="difficulty inputs" name="difficulty">
