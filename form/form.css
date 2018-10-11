@@ -33,6 +33,7 @@ h1 {
 }
 
 label {
+  margin-left: 1%;
   background: white;
   color: black;
   font-family: monospace;
@@ -56,10 +57,11 @@ form {
 
 .questionNum.inputs {
   cursor: text;
+  width: 98%;
 }
 
 .inputs {
-  /* box-shadow: 0px 0px 10px 2px white; */
+  padding-left: 2%;
   height: 12%;
   width: 100%;
   background-color: black;
@@ -75,10 +77,6 @@ form {
 select {
   -webkit-appearance: none;
   -webkit-border-radius: 0px;
-}
-
-.inputs:hover {
-  /* box-shadow: 0px 0px 10px 4px white; */
 }
 
 .inputs.submit{

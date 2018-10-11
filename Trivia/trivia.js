@@ -1,4 +1,3 @@
-
 //makes URL from submited data
 var baseURL;
 //checks if anything was passed through
@@ -9,22 +8,27 @@ if (window.location.search !== '') {
 }
 
 //gets all document elements
-const main = document.querySelector('main')
+const main = document.querySelector('main');
 const questionContainer = document.querySelector('.question');
 const answerContainer = document.querySelector('.answers');
-const nextBtn = document.querySelector('#next-btn')
-const backBtn = document.querySelector('#back-btn')
-const scoreText = document.querySelector('#score')
-const questionNum = document.querySelector('#quest-num')
-const end = document.querySelector('.ending')
-const endScore = document.querySelector('.end-score')
-const endAmount = document.querySelector('.end-amount')
-const endPercent = document.querySelector('.end-percent')
-const timeText = document.querySelector('.timer')
-const leaderboardBtn = document.querySelector('.leaderboard')
-const leader = document.querySelector('.leader')
+const nextBtn = document.querySelector('#next-btn');
+const backBtn = document.querySelector('#back-btn');
+const scoreText = document.querySelector('#score');
+const questionNum = document.querySelector('#quest-num');
+const end = document.querySelector('.ending');
+const endScore = document.querySelector('.end-score');
+const endAmount = document.querySelector('.end-amount');
+const endPercent = document.querySelector('.end-percent');
+const timeText = document.querySelector('.timer');
+const leaderboardBtn = document.querySelector('.leaderboard');
+const leader = document.querySelector('.leader');
+const scores = document.querySelector('.scores');
+const leaderAdd = document.querySelector('#leader-add');
+const leaderBack = document.querySelector('#leader-back');
+const bar = document.querySelector('.bar');
 const icon = document.querySelector('#categoryIcon');
 const categoryName = document.querySelector('.categoryName');
+
 
 //declares all variables needed for JS
 var result;
@@ -37,6 +41,7 @@ var ansBnt;
 var categoryKey;
 var timeScore = 100;
 var timer;
+var leaderboardData;
 var mainColors = {
   orange:'darkorange',
   green: 'darkgreen',
@@ -192,6 +197,7 @@ nextBtn.addEventListener('click', e => {
     guessed = false;
     nextQuestion();
     nextBtn.classList.add('greyed-out')
+    timeText.style.color = 'black'
   }
 })
 
@@ -337,12 +343,67 @@ var addIcon = () => {
 var time = () => {
   timeScore--
   timeText.innerHTML = `Time: ${timeScore}`
+  bar.style.width = `${timeScore}%`
+  if (timeScore < 52) {
+    timeText.style.color = 'white';
+  }
   if (timeScore === 0) {
     clearInterval(timer)
   }
 }
 
-leaderboardBtn.addEventListener('click', e=> {
+var writeLeaderboard = (data) => {
   end.classList.add('hidden')
   leader.classList.remove('hidden')
+  let row = document.createElement('div')
+  row.classList.add('row')
+  for (let x in data[0]) {
+    let col = document.createElement('div')
+    col.classList.add('col')
+    col.innerHTML = x
+    row.appendChild(col)
+  }
+  scores.appendChild(row)
+  for (let i = 0; i < data.length; i++) {
+    let row = document.createElement('div')
+    row.classList.add('row')
+    for (let x in data[i]) {
+      let col = document.createElement('div')
+      col.classList.add('col')
+      col.innerHTML = data[i][x]
+      row.appendChild(col)
+    }
+    scores.appendChild(row)
+  }
+}
+
+var deleteLeaderboard = () => {
+  let rows = document.querySelectorAll('.row')
+  if (rows.length > 0) {
+    for (let i = 0; i < rows.length; i++) {
+      rows[i].parentNode.removeChild(rows[i]);
+    }
+  }
+}
+
+leaderboardBtn.addEventListener('click', e=> {
+  axios.get('leaderboard.json')
+  .then(e => {
+    leaderboardData = e.data;
+    writeLeaderboard(leaderboardData)
+  })
+})
+
+leaderAdd.addEventListener('click', e=> {
+  let name = prompt('What is your name?')
+  let obj = {"Name": name, "Score": score, "Amount Correct": `${amountCorrect} out of ${amount}`}
+  leaderboardData.push(obj)
+  deleteLeaderboard()
+  writeLeaderboard(leaderboardData)
+})
+
+leaderBack.addEventListener('click', e=> {
+  leader.classList.add('hidden')
+  end.classList.remove('hidden')
+  deleteLeaderboard()
 })

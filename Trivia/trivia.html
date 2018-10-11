@@ -7,7 +7,14 @@
   </head>
   <body>
     <div class="leader hidden">
-
+      <div class="score-content">
+        <div class="scores">
+        </div>
+        <div class="score-btn-container">
+          <button id="leader-back" class="score-btn" type="button" name="button">Back</button>
+          <button id="leader-add" class="score-btn" type="button" name="button">Add</button>
+        </div>
+      </div>
     </div>
     <div class="ending hidden">
       <div>
@@ -15,7 +22,7 @@
         <h2 class="end-amount"></h2>
         <h2 class="end-percent"></h2>
         <div class="end-btns">
-          <button class="end-btn" type="button" name="button" onClick="window.location.reload()">Again</button>
+          <button class="end-btn" type="button" name="button" onClick="window.location.reload()">Try Again</button>
           <button class="leaderboard end-btn" type="button" name="button">Leaderboard</button>
         </div>
       </div>
@@ -28,7 +35,12 @@
       <div class="main-container">
         <div class="answers">
         </div>
-        <h1 class="timer">Time: </h1>
+        <div class="time-bar">
+          <h1 class="timer">Time: </h1>
+          <div class="bar">
+          </div>
+        </div>
+
       </div>
     </main>
     <footer>

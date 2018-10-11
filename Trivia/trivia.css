@@ -45,7 +45,28 @@ main {
 }
 
 .timer {
+  margin-top: 10px;
+  position: absolute;
+  left: 47%;
   text-align: center;
+  font-size: 1.5rem;
+  color: black;
+}
+
+.time-bar {
+  margin-top: 30px;
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: 4px solid black;
+  overflow: hidden;
+  background-color: black
+}
+
+.bar {
+  height: 100%;
+  background-color: white;
+  border-radius: 10px;
 }
 
 button {
@@ -56,7 +77,6 @@ button {
   font-size: 1.5rem;
   box-shadow: 2px 2px 1px black;
   cursor: pointer;
-  color: white;
 }
 
 .answer-btn {
@@ -111,6 +131,7 @@ a {
   background-color: white;
   /* background: linear-gradient(0deg, red, orange, yellow, green, blue, indigo, violet);
   background-size: 500% 500%; */
+
   border-radius: 10px;
   box-shadow: 8px 8px 10px black;
   display: flex;
@@ -152,6 +173,45 @@ h2 {
   width: 80%;
   background-color: white;
   z-index: 50;
+  border-radius: 10px;
+  box-shadow: 8px 8px 10px black;
+}
+
+.score-content {
+  margin: 10px auto;
+  height: 90%;
+  width: 90%;
+}
+
+.scores {
+  overflow-y: scroll;
+  height: 90%;
+}
+
+.leader .score-content .score-btn-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  height: 10%;
+}
+
+.score-btn {
+  width: 30%;
+  height: 100%;
+  background-color: green;
+  color: white;
+}
+
+.row {
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+.col {
+  color: black;
+  font-size: 1.7rem;
+  width: 33%;
+  text-align: center;
 }
 
 @-webkit-keyframes Rainbow {
