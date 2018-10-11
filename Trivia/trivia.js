@@ -23,6 +23,8 @@ const endPercent = document.querySelector('.end-percent')
 const timeText = document.querySelector('.timer')
 const leaderboardBtn = document.querySelector('.leaderboard')
 const leader = document.querySelector('.leader')
+const icon = document.querySelector('#categoryIcon');
+const categoryName = document.querySelector('.categoryName');
 
 //declares all variables needed for JS
 var result;
@@ -52,6 +54,32 @@ var buttonColors = {
   blue: '#1626f4',
   red: '#ed0528',
   purple: '#d01cf7'
+}
+var categoryIcon = {
+  general: 'https://giphy.com/embed/ijxKTF6iE4K4M',
+  books: 'https://giphy.com/embed/3o85xBwvWcj1Z11Gda',
+  film: 'https://giphy.com/embed/xUOxeZ7Cgf5RAZ0tLq',
+  music: 'https://giphy.com/embed/3oriNYvVkCgIhSIKic',
+  theatres: 'https://giphy.com/embed/26hiubgNAC4Enzd1S',
+  television: 'https://giphy.com/embed/muL2iYJR1MNPCdXxHv',
+  videoGames: 'https://giphy.com/embed/R6f2XTDc3RlL2',
+  boardGames: 'https://giphy.com/embed/1WyJrpqEI74qs',
+  nature: 'https://giphy.com/embed/l0MYEqx0khJxVyXcc',
+  computers: 'https://giphy.com/embed/11jQqqyF4S5MWY',
+  mathematics: 'https://giphy.com/embed/tbaVMdZJcBNiE',
+  mythology: 'https://giphy.com/embed/8ki6aWRvqs7fy',
+  sports: 'https://giphy.com/embed/vcYJ10AVGFZbG',
+  geography: 'https://giphy.com/embed/5sZfvZBHX71Wo',
+  history: 'https://giphy.com/embed/rbE4XIr6GS8F2',
+  politics: 'https://giphy.com/embed/3o7bu6ctZy3qGJyBkk',
+  art: "https://giphy.com/embed/2Fazad9Hs5xPAF6iQ",
+  celebrities: 'https://giphy.com/embed/xUOxf2f9I3Ejpky5Wg',
+  animals: 'https://giphy.com/embed/aHmquP8GsDCHS',
+  vehicles: 'https://giphy.com/embed/l0Iy2xpoNWyfyjpuM',
+  comics: 'https://giphy.com/embed/iLup1YcSTLaUg',
+  gadgets: 'https://giphy.com/embed/wKqVffdPJdmog',
+  anime: 'https://giphy.com/embed/V4sY8JCTxGyaI',
+  catoon: 'https://giphy.com/embed/4pjKt6jfT6Z7W'
 }
 
 //makes the api request
@@ -99,6 +127,8 @@ var nextQuestion = () => {
   //changes colors
   dynamicBackground();
   dynamicButtons();
+  //add categoryIcon
+  addIcon()
   //starts timer
   timer = setInterval(time, 200)
   timeText.innerHTML = `Time: ${timeScore}`
@@ -165,63 +195,141 @@ nextBtn.addEventListener('click', e => {
   }
 })
 
-//changes the bacground color of each button inreation to category
+//changes the background color of each button by category
 var dynamicButtons = () => {
   ansBnt = document.querySelectorAll('.answer-btn')
   categoryKey = result[count].category;
   for(let i = 0; i < ansBnt.length; i++){
     if(categoryKey.includes('Entertainment') || categoryKey.includes('Celebrities')){
-      nextBtn.style.backgroundColor = buttonColors.orange
-      backBtn.style.backgroundColor = buttonColors.orange
-      ansBnt[i].style.backgroundColor = buttonColors.orange
-      ansBnt[i].style.color = 'black'
-      backBtn.style.color = 'black'
+        nextBtn.style.backgroundColor = buttonColors.orange
+        backBtn.style.backgroundColor = buttonColors.orange
+        ansBnt[i].style.backgroundColor = buttonColors.orange
+        ansBnt[i].style.color = 'black'
+        backBtn.style.color = 'black'
     } else if(categoryKey.includes('Science')){
-      nextBtn.style.backgroundColor = buttonColors.green
-      backBtn.style.backgroundColor = buttonColors.green
-      ansBnt[i].style.backgroundColor = buttonColors.green
+        nextBtn.style.backgroundColor = buttonColors.green
+        backBtn.style.backgroundColor = buttonColors.green
+        ansBnt[i].style.backgroundColor = buttonColors.green
     } else if(categoryKey.includes('Art')){
-      nextBtn.style.backgroundColor = buttonColors.pink
-      backBtn.style.backgroundColor = buttonColors.pink
-      ansBnt[i].style.backgroundColor = buttonColors.pink
+        nextBtn.style.backgroundColor = buttonColors.pink
+        backBtn.style.backgroundColor = buttonColors.pink
+        ansBnt[i].style.backgroundColor = buttonColors.pink
     } else if(categoryKey.includes('History') || categoryKey.includes('Mythology')){
-      nextBtn.style.backgroundColor = buttonColors.yellow
-      backBtn.style.backgroundColor = buttonColors.yellow
-      ansBnt[i].style.backgroundColor = buttonColors.yellow
-      ansBnt[i].style.color = 'black'
-      backBtn.style.color = 'black'
+        nextBtn.style.backgroundColor = buttonColors.yellow
+        backBtn.style.backgroundColor = buttonColors.yellow
+        ansBnt[i].style.backgroundColor = buttonColors.yellow
+        ansBnt[i].style.color = 'black'
+        backBtn.style.color = 'black'
     } else if(categoryKey.includes('Geography')){
-      nextBtn.style.backgroundColor = buttonColors.blue
-      backBtn.style.backgroundColor = buttonColors.blue
-      ansBnt[i].style.backgroundColor = buttonColors.blue
+        nextBtn.style.backgroundColor = buttonColors.blue
+        backBtn.style.backgroundColor = buttonColors.blue
+        ansBnt[i].style.backgroundColor = buttonColors.blue
     } else if(categoryKey.includes('Sports')){
-      nextBtn.style.backgroundColor = buttonColors.red
-      backBtn.style.backgroundColor = buttonColors.red
-      ansBnt[i].style.backgroundColor = buttonColors.red
+        nextBtn.style.backgroundColor = buttonColors.red
+        backBtn.style.backgroundColor = buttonColors.red
+        ansBnt[i].style.backgroundColor = buttonColors.red
     } else if(categoryKey.includes('Animals') || categoryKey.includes('Vechicles') || categoryKey.includes('General Knowledge') || categoryKey.includes('Politics') || categoryKey.includes('Vehicles')){
-      nextBtn.style.backgroundColor = buttonColors.purple
-      backBtn.style.backgroundColor = buttonColors.purple
-      ansBnt[i].style.backgroundColor = buttonColors.purple
+        nextBtn.style.backgroundColor = buttonColors.purple
+        backBtn.style.backgroundColor = buttonColors.purple
+        ansBnt[i].style.backgroundColor = buttonColors.purple
     }
   }
 }
-// Chenges bacground color of the main tag in relation to the category
+//change bacground color of the main-tag by category
 var dynamicBackground = () => {
   categoryKey = result[count].category;
   if(categoryKey.includes('Entertainment') || categoryKey.includes('Celebrities')){
-    main.style.backgroundColor = mainColors.orange
+      main.style.backgroundColor = mainColors.orange
   } else if(categoryKey.includes('Science')){
-    main.style.backgroundColor = mainColors.green
+      main.style.backgroundColor = mainColors.green
   } else if(categoryKey.includes('Art')){
-    main.style.backgroundColor = mainColors.pink
+      main.style.backgroundColor = mainColors.pink
   } else if(categoryKey.includes('History') || categoryKey.includes('Mythology')){
-    main.style.backgroundColor = mainColors.yellow
+      main.style.backgroundColor = mainColors.yellow
   } else if(categoryKey.includes('Geography')){
-    main.style.backgroundColor = mainColors.blue
+      main.style.backgroundColor = mainColors.blue
   } else if(categoryKey.includes('Sports')){
-    main.style.backgroundColor = mainColors.red
+      main.style.backgroundColor = mainColors.red
   } else if(categoryKey.includes('Animals') || categoryKey.includes('Vechicles') || categoryKey.includes('General Knowledge') || categoryKey.includes('Politics') || categoryKey.includes('Vehicles')){
-    main.style.backgroundColor = mainColors.purple
+      main.style.backgroundColor = mainColors.purple
+  }
+}
+//adds icon for current category
+var addIcon = () => {
+  categoryKey = result[count].category;
+  if(categoryKey.includes('General')) {
+        icon.setAttribute('src', categoryIcon.general)
+        categoryName.innerText = 'General Knowledge'
+  } else if(categoryKey.includes('Books')) {
+        icon.setAttribute('src', categoryIcon.books)
+        categoryName.innerText = 'Books'
+  } else if(categoryKey.includes('Film')) {
+        icon.setAttribute('src', categoryIcon.film)
+        categoryName.innerText = 'Movies'
+  } else if(categoryKey.includes('Musicals & Theatres')) {
+        icon.setAttribute('src', categoryIcon.theatres)
+        categoryName.innerText = 'Theatres'
+  } else if(categoryKey.includes('Music')) {
+        icon.setAttribute('src', categoryIcon.music)
+        categoryName.innerText = 'Music'
+  } else if(categoryKey.includes('Television')) {
+        icon.setAttribute('src', categoryIcon.television)
+        console.log(categoryIcon.television);
+      categoryName.innerText = 'Televison'
+  } else if(categoryKey.includes('Video Games')) {
+        icon.setAttribute('src', categoryIcon.videoGames)
+        categoryName.innerText = 'Video Games'
+  } else if(categoryKey.includes('Board Games')) {
+        icon.setAttribute('src', categoryIcon.boardGames)
+        categoryName.innerText = 'Board Games'
+  } else if(categoryKey.includes('Nature')) {
+        icon.setAttribute('src', categoryIcon.nature)
+        categoryName.innerText = 'Nature'
+  } else if(categoryKey.includes('Computers')) {
+        icon.setAttribute('src', categoryIcon.computers)
+        categoryName.innerText = 'Computers'
+  } else if(categoryKey.includes('Mathematics')) {
+        icon.setAttribute('src', categoryIcon.mathematics)
+        categoryName.innerText = 'Mathematics'
+  } else if(categoryKey.includes('Mythology')) {
+        icon.setAttribute('src', categoryIcon.mythology)
+        categoryName.innerText = 'Mythology'
+  } else if(categoryKey.includes('Sports')) {
+        icon.setAttribute('src', categoryIcon.sports)
+        categoryName.innerText = 'Sports'
+  } else if(categoryKey.includes('Geography')) {
+        icon.setAttribute('src', categoryIcon.geography)
+        categoryName.innerText = 'Geography'
+  } else if(categoryKey.includes('History')) {
+        icon.setAttribute('src', categoryIcon.history)
+        categoryName.innerText = 'History'
+  } else if(categoryKey.includes('Politics')) {
+        icon.setAttribute('src', categoryIcon.politics)
+        categoryName.innerText = 'Politics'
+  } else if(categoryKey.includes('Art')) {
+        icon.setAttribute('src', categoryIcon.art)
+        categoryName.innerText = 'Art'
+  } else if(categoryKey.includes('Celebrities')) {
+        icon.setAttribute('src', categoryIcon.celebrities)
+        categoryName.innerText = 'Celebrities'
+  } else if(categoryKey.includes('Animals')) {
+        icon.setAttribute('src', categoryIcon.animals)
+        categoryName.innerText = 'Animals'
+  } else if(categoryKey.includes('Vehicles')) {
+        icon.setAttribute('src', categoryIcon.vehicles)
+        categoryName.innerText = 'Vehicles'
+  } else if(categoryKey.includes('Comics')) {
+        icon.setAttribute('src', categoryIcon.comics)
+        categoryName.innerText = 'Comics'
+  } else if(categoryKey.includes('Gadgets')) {
+        icon.setAttribute('src', categoryIcon.gadgets)
+        categoryName.innerText = 'Gadgets'
+  } else if(categoryKey.includes('Anime')) {
+        icon.setAttribute('src', categoryIcon.anime)
+        categoryName.innerText = 'Anime'
+  } else if(categoryKey.includes('Catoon')) {
+        icon.setAttribute('src', categoryIcon.catoon)
+        categoryName.innerText = 'Cartoons'
   }
 }
 

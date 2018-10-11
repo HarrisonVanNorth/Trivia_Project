@@ -84,6 +84,11 @@ h3 {
   width: 10%;
   margin-right: 9%;
 }
+.icon {
+  display: flex;
+  justify-content: center;
+  height: 100%
+}
 
 a {
   width: 10%;
