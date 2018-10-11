@@ -3,9 +3,9 @@ body {
   padding: 0;
   font-size: 12pt;
   /* background-image: url('https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1323857/300/200/m1/fpnw/wm0/random-objects-pre-.jpg?1464682269&s=d7241c679926df223363924f0ec1c3d8'); */
-  background: linear-gradient(0deg, red, orange, yellow, green, blue, indigo, violet);
+  background: linear-gradient(180deg, red, orange, yellow, blue, indigo, violet);
   background-size: 500% 500%;
-  animation: Rainbow 25s ease infinite;
+  animation: Rainbow 50s linear infinite;
 }
 
 header {
